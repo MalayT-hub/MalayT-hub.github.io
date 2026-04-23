@@ -106,12 +106,7 @@ if (hasCollidedWithApple()) {
 }
 
 
-function checkForNewDirection(event) {
 
-
-
-
-}
 
 function checkForNewDirection(event) {
   /* 
@@ -123,25 +118,16 @@ function checkForNewDirection(event) {
 
   if (activeKey === KEY.LEFT) {
     snake.head.direction = "left";
-  }
- else if (activeKey === KEY.RIGHT) {
+  } else if (activeKey === KEY.RIGHT) {
     snake.head.direction = "right";
-  }
-
-
-  else if (activeKey === KEY.UP) {
+  } else if (activeKey === KEY.UP) {
     snake.head.direction = "up";
-  }
-
-
-  else{
+  } else {
     snake.head.direction = "down";
   }
 
-
-
   // FILL IN THE REST
-  console.log(snake.head.direction);     // uncomment me!
+  console.log(snake.head.direction); // uncomment me!
 }
 
 
@@ -229,7 +215,7 @@ function moveBodyAToBodyB(bodyA, bodyB){
 
 
 
-function hasHitWall() 
+
 
 
 
@@ -242,9 +228,23 @@ function hasHitWall() {
     
     HINT: What will the row and column of the snake's head be if this were the case?
   */
+ if (snake.head.column < 0) {
+  return true;
+ }
+
+ if (snake.head.row < 0) {
+  return true;
+ }
+  if (snake.head.column >COLUMNS) {
+    return true;
+  }
+  
+  if (snake.head.row >ROWS) {
+    return true;
+  }
 
 
-
+  
   return false;
 }
 
@@ -369,7 +369,8 @@ if (snake.body.length === 0) {
   snakeSquare.element.attr("id", "snake-head");
 }
 
-
+snake.body.push(snakeSquare);
+snake.tail = snakeSquare;
 
 
 }
